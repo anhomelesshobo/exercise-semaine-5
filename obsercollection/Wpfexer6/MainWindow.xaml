@@ -1,0 +1,82 @@
+﻿<Window x:Class="Wpfexer6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpfexer6"
+        xmlns:other="clr-namespace:Model_used;assembly=Model_used"
+        DataContext="{Binding RelativeSource={RelativeSource self}}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="850">
+    
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="75"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock  VerticalAlignment="Center" Height="25" Width="266" HorizontalAlignment="Center">My Games:</TextBlock>
+        <ScrollBar Scroll="scrollgame" Grid.Column="1" Grid.Row="5" Orientation="Horizontal" x:Name="Scrollbar" Width="235" SmallChange="1" Maximum="3">
+        </ScrollBar>
+        <ListView  SelectionChanged="selected"  Grid.RowSpan="6" x:Name="Listview" Grid.Row="1">
+                <ListViewItem Height="110" FontSize="40" FontFamily="Impact" x:Name="Bf4"  Content="Battefield 4"/>
+                <ListViewItem Height="110" FontSize="40" FontFamily="Impact" x:Name="Farcry_5" Content="Farcry 5"/>
+                <ListViewItem Height="110" FontSize="30" FontFamily="Impact" x:Name="Bioshock" Content="Bioshock Infinite"/>
+                <ListViewItem Height="110" FontSize="40" FontFamily="Impact" x:Name="Need_for_speed" Content="Need for speed"/>
+
+            </ListView>
+
+
+            <TextBlock Grid.Row="1" FontWeight="Bold" Grid.Column="2" Height="30" Width="70" HorizontalAlignment="Left" FontSize="20">Titre:</TextBlock>
+
+            <Border Grid.Row="1" Grid.Column="2" Height="30" Width="190" HorizontalAlignment="Right"   BorderBrush="Black" BorderThickness="1">
+                <TextBlock Grid.Row="1" Grid.Column="2" x:Name="Titre" Height="30" Width="180" HorizontalAlignment="Right" Text="{Binding CurrentGame.Titre}" FontSize="20"  TextWrapping="Wrap"></TextBlock>
+            </Border>
+
+            <TextBlock Grid.Row="2" Grid.Column="2" Height="22" Width="102" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" FontSize="18">Description:</TextBlock>
+            <Border Grid.Row="2" Grid.Column="2" Height="51" Width="266" HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="1">
+            <TextBlock Grid.Row="1" Grid.Column="2" Height="51" Text="{Binding CurrentGame.Description}" x:Name="Description" Width="266" HorizontalAlignment="Left" Margin="0,0,0,0" FontSize="16" VerticalAlignment="Top" TextWrapping="Wrap"></TextBlock>
+            </Border>
+
+            <TextBlock Grid.Row="3" FontWeight="Bold" Grid.Column="2" Height="30" Width="73" HorizontalAlignment="Left" FontSize="20">Editeur:</TextBlock>
+            <Border Grid.Row="3" Grid.Column="2" Height="30" Width="190" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="1">
+                <TextBlock Grid.Row="3" Grid.Column="2" Height="30" Text="{Binding CurrentGame.Editeur}" x:Name="Editeur" Width="187" HorizontalAlignment="Right" FontSize="20"  TextWrapping="Wrap"></TextBlock>
+            </Border>
+
+            <TextBlock Grid.Row="4" FontWeight="Bold" Grid.Column="2" Height="30" Width="73" HorizontalAlignment="Left" FontSize="20">Annee:</TextBlock>
+            <Border Grid.Row="4" Grid.Column="2" Height="30" Width="190" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="1">
+                <TextBlock Grid.Row="4" Grid.Column="2" Height="30" Text="{Binding CurrentGame.Annee}" Width="187" x:Name="Annee" HorizontalAlignment="Right" FontSize="20"  TextWrapping="Wrap"></TextBlock>
+            </Border>
+
+            <TextBlock Grid.Row="5" FontWeight="Bold" Grid.Column="2" Height="30" Width="80" HorizontalAlignment="Left" FontSize="20">Console:</TextBlock>
+            <ComboBox Grid.Row="5" Grid.Column="2" Height="30" Width="170" x:Name="Console" HorizontalAlignment="Right">
+            <ComboBoxItem Content="Playstation"/>
+            <ComboBoxItem Content="Xbox"/>
+            <ComboBoxItem Content="PC"/>
+            <ComboBoxItem Content="Switch"/>
+        </ComboBox>
+
+            <TextBlock Grid.Row="6" FontWeight="Bold" Grid.Column="2" Height="34" Width="80" HorizontalAlignment="Left" FontSize="20">Rating:</TextBlock>
+        <Slider Grid.Row="6" Grid.Column="2" ValueChanged="Slider_value" Height="18" Value="{Binding CurrentGame.Rating}" Width="170"  HorizontalAlignment="Right">
+            </Slider>
+
+            <Image Grid.Column="1" Grid.RowSpan="4" Grid.Row="1" Width="255" Source="{Binding CurrentGame.Imagepath}" x:Name="Imagepath" Height="285">
+            </Image>
+
+          
+
+        <TextBlock Grid.Column="1" Grid.Row="6" Text="{Binding CurrentGame.Rating}" Width="70" Height="80" FontSize="50" FontFamily="Impact"  VerticalAlignment="Bottom" Margin="25,0,0,0"  x:Name="Scrollvalue" HorizontalAlignment="Center"></TextBlock>
+        </Grid>
+    
+    
+</Window>
