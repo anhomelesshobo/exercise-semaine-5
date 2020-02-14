@@ -1,0 +1,44 @@
+﻿<Window x:Class="wpfsem5exer1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpfsem5exer1"
+        mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Grid.ColumnSpan="2" Text="{Binding Path=Gameshown.Titre}" FontWeight="Bold" FontSize="70" HorizontalAlignment="Center" Name="Currrentgame"></TextBlock>
+
+        <Image Grid.Row="1" Grid.RowSpan="2" Source="{Binding Path=Gameshown.PicturePath}"></Image>
+
+        <TextBlock Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="110" Height="40" Text="Editeur:" FontWeight="Bold" FontSize="25" Margin="0,-1,25,0"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="1" Width="250" Height="40" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Text="{Binding Path=Gameshown.Editeur}"  HorizontalAlignment="Right" Margin="0,3,25,0"  ></TextBlock>
+
+        <TextBlock Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="110" Height="40" Text="Année:" FontWeight="Bold" FontSize="25" Margin="0,0,30,8"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="1" Width="250" Height="40" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="20" Text="{Binding Path=Gameshown.Annee}" HorizontalAlignment="right" Margin="0,0,25,0"  ></TextBlock>
+
+        <TextBlock Grid.Column="1" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="110" Height="40" Text="Console:" FontWeight="Bold" FontSize="25"></TextBlock>
+        <ComboBox Grid.Column="1" Grid.Row="2" Width="250"  ItemBindingGroup="{Binding Path=Gameshown.Console}" Height="40" VerticalAlignment="Top"  HorizontalAlignment="right" Margin="0,0,25,0"  ></ComboBox>
+
+        <TextBlock Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="110" Height="40" Text="Descrip:" FontWeight="Bold" FontSize="25"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Width="250" Height="140" FontWeight="Bold" FontSize="20" VerticalAlignment="Center"  HorizontalAlignment="right" Margin="0,75,25,0" x:Name="descrip" Text="{Binding Path=Gameshown.Description}"></TextBlock>
+
+        <TextBlock  Grid.Column="0" Grid.Row="3"  VerticalAlignment="Center" Width="75" FontWeight="Bold" FontSize="20" Height="27" Margin="0,10,85,0" Text="Rating:" ></TextBlock>
+        <TextBox Grid.Column="0"  Grid.Row="3"  VerticalAlignment="Center" Text="{Binding Path=Gameshown.Rating}" Width="75" FontWeight="Bold" FontSize="20" Height="27" Margin="0,10,-60,0"  ></TextBox>
+        <ScrollBar  Maximum="3" Grid.Column="0" Grid.Row="3" Orientation="Horizontal" Value="{Binding Path=Gameshown}" VerticalAlignment="Top" Width="300" Height="30" Margin="0,10,0,0" x:Name="scrollgame" Scroll="gameScroll" SmallChange="1"/>
+        <Slider Minimum="1" x:Name="RatingGame" ValueChanged="Ratingchanged" Maximum="10" Value="{Binding Path=Gameshown.Rating}" FontWeight="Bold" FontSize="20" Grid.Column="0" Grid.Row="3" Orientation="Horizontal" VerticalAlignment="bottom" Width="300" Height="30" Margin="0,10,0,0"></Slider>
+    </Grid>
+</Window>
